@@ -3,9 +3,9 @@ package pt.ribas.vacation.controller;
 import java.text.MessageFormat;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,6 +19,7 @@ import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
 
 @RestController
+@CrossOrigin
 public class VacationController {
     @Autowired
     private VacationService service;
