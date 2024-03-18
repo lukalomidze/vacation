@@ -50,7 +50,7 @@ public class Vacation {
     private Status status = Status.PENDING;
 
     @Column(nullable = false)
-    private Timestamp statusChangeTime = Timestamp.from(Instant.now());
+    private Timestamp statusChange = Timestamp.from(Instant.now());
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "employee_id", nullable = false)

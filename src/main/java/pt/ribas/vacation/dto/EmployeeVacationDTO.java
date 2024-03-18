@@ -23,5 +23,5 @@ public class EmployeeVacationDTO {
 
     private Status status = Status.PENDING;
 
-    private Timestamp statusChangeTime;
+    private Timestamp statusChange;
 }
