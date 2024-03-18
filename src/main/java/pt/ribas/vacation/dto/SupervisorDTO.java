@@ -1,19 +1,18 @@
 package pt.ribas.vacation.dto;
 
-import java.util.List;
-
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pt.ribas.vacation.entity.Employee;
+import lombok.ToString;
 import pt.ribas.vacation.enums.Gender;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class EmployeeDTO {
+@ToString
+public class SupervisorDTO {
     private String firstName;
 
     private String lastName;
@@ -21,8 +20,4 @@ public class EmployeeDTO {
     private String email;
 
     private Gender gender;
-
-    private SupervisorDTO supervisor;
-
-    private List<EmployeeVacationDTO> vacations;
 }

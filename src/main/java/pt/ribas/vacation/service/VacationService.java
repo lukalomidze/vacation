@@ -4,7 +4,6 @@ import java.text.MessageFormat;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -14,7 +13,6 @@ import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.entity.Employee;
 import pt.ribas.vacation.entity.Vacation;
-import pt.ribas.vacation.enums.Status;
 import pt.ribas.vacation.repository.EmployeeRepository;
 import pt.ribas.vacation.repository.VacationRepository;
 
