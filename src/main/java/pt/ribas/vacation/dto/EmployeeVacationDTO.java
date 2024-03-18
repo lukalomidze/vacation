@@ -1,7 +1,6 @@
 package pt.ribas.vacation.dto;
 
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;

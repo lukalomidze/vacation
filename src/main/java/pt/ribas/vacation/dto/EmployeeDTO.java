@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import pt.ribas.vacation.entity.Employee;
 import pt.ribas.vacation.enums.Gender;
 
 @NoArgsConstructor
