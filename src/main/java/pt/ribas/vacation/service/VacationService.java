@@ -1,6 +1,8 @@
 package pt.ribas.vacation.service;
 
 import java.text.MessageFormat;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -87,6 +89,31 @@ public class VacationService {
         employee.setSupervisor(supervisor);
 
         employeeRepository.save(employee);
+    }
+
+
+    public List<EmployeeDTO> getSupervisorEmployees(Long supervisorId) {
+
+        Employee supervisor = employeeRepository
+            .findById(supervisorId)
+        .orElseThrow(
+            () -> new ResponseStatusException(
+            HttpStatus.NOT_FOUND,
+            MessageFormat.format("Supervisor with id {0} not found", supervisorId)
+        ));
+
+        if (supervisor.getSupervisor() != null) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                MessageFormat.format("Employee with id {0} is not a supervisor", supervisorId)
+            );
+        }
+
+        List<Employee> employeesUnderSupervisor = employeeRepository.findBySupervisor(supervisor);
+
+        return employeesUnderSupervisor.stream()
+            .map(employee -> modelMapper.map(employee, EmployeeDTO.class))
+            .collect(Collectors.toList());
     }
 
 }

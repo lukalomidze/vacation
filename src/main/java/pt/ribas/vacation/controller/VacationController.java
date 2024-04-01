@@ -1,6 +1,7 @@
 package pt.ribas.vacation.controller;
 
 import java.text.MessageFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -18,6 +19,7 @@ import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
+
 
 
 @RestController
@@ -59,5 +61,10 @@ public class VacationController {
     @GetMapping("/alter-vacation-request")
     public void alterVacationRequest() {
 
+    }
+
+    @GetMapping("/get-supervisor-employees/{id}")    
+    public List<EmployeeDTO> getSupervisorEmployees(@PathVariable Long id) {
+        return service.getSupervisorEmployees(id);
     }
 }
