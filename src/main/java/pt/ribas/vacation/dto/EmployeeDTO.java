@@ -13,6 +13,8 @@ import pt.ribas.vacation.enums.Gender;
 @Getter
 @Setter
 public class EmployeeDTO {
+    private Long id;
+
     private String firstName;
 
     private String lastName;

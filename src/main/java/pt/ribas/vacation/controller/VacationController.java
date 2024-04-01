@@ -16,7 +16,9 @@ import org.springframework.web.server.ResponseStatusException;
 import jakarta.validation.Valid;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
+import pt.ribas.vacation.dto.RegisterEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
+
 
 @RestController
 @CrossOrigin
@@ -49,9 +51,9 @@ public class VacationController {
         }
     }
 
-    @GetMapping("/register-employee")
-    public void registerEmployee() {
-
+    @PostMapping("/register-employee")
+    public void registerEmployee(@Valid @RequestBody RegisterEmployeeDTO employeeDTO) {
+        service.registerEmployee(employeeDTO);
     }
 
     @GetMapping("/alter-vacation-request")

@@ -11,6 +11,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
+import pt.ribas.vacation.dto.RegisterEmployeeDTO;
 import pt.ribas.vacation.entity.Employee;
 import pt.ribas.vacation.entity.Vacation;
 import pt.ribas.vacation.repository.EmployeeRepository;
@@ -61,4 +62,31 @@ public class VacationService {
 
         vacationRepository.save(vacation);
     }
+
+    public void registerEmployee(RegisterEmployeeDTO employeeDTO){
+        Long supervisorId = employeeDTO.getSupervisor().getId();
+
+        Employee supervisor = employeeRepository
+            .findById(supervisorId)
+        .orElseThrow(
+            () -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                MessageFormat.format("Employee with id {0} not found", supervisorId)
+            )
+        );
+
+        if (supervisor.getSupervisor() != null) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                MessageFormat.format("Employee with id {0} is not a supervisor", supervisorId)
+            );
+        }
+
+        Employee employee = modelMapper.map(employeeDTO, Employee.class);
+
+        employee.setSupervisor(supervisor);
+
+        employeeRepository.save(employee);
+    }
+
 }

@@ -1,25 +1,17 @@
 package pt.ribas.vacation.dto;
 
+
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
-import pt.ribas.vacation.enums.Gender;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@ToString
-public class SupervisorDTO {
+public class RegisterEmployeeSupervisorDTO {
+    @NotNull(message = "Id must be provided")
     private Long id;
-
-    private String firstName;
-
-    private String lastName;
-
-    private String email;
-
-    private Gender gender;
 }
