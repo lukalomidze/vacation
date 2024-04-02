@@ -23,7 +23,7 @@ import pt.ribas.vacation.service.VacationService;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin("*")
 public class VacationController {
     @Autowired
     private VacationService service;
@@ -63,6 +63,7 @@ public class VacationController {
 
     }
 
+    // TODO: remove supervisor from this specific dto, add table for admins
     @GetMapping("/get-supervisor-employees/{id}")    
     public List<EmployeeDTO> getSupervisorEmployees(@PathVariable Long id) {
         return service.getSupervisorEmployees(id);
