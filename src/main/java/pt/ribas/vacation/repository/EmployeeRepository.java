@@ -8,4 +8,5 @@ import pt.ribas.vacation.entity.Employee;
 
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    List<Employee> findBySupervisor(Employee supervisor);}
+    List<Employee> findBySupervisor(Employee supervisor);
+}
