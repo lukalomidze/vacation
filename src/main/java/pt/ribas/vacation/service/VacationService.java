@@ -65,7 +65,7 @@ public class VacationService {
         vacationRepository.save(vacation);
     }
 
-    public void registerEmployee(RegisterEmployeeDTO employeeDTO){
+    public void registerEmployee(RegisterEmployeeDTO employeeDTO) {
         Long supervisorId = employeeDTO.getSupervisor().getId();
 
         Employee supervisor = employeeRepository
@@ -93,14 +93,14 @@ public class VacationService {
 
 
     public List<EmployeeDTO> getSupervisorEmployees(Long supervisorId) {
-
         Employee supervisor = employeeRepository
             .findById(supervisorId)
         .orElseThrow(
             () -> new ResponseStatusException(
-            HttpStatus.NOT_FOUND,
-            MessageFormat.format("Supervisor with id {0} not found", supervisorId)
-        ));
+                HttpStatus.NOT_FOUND,
+                MessageFormat.format("Supervisor with id {0} not found", supervisorId)
+            )
+        );
 
         if (supervisor.getSupervisor() != null) {
             throw new ResponseStatusException(
@@ -113,7 +113,6 @@ public class VacationService {
 
         return employeesUnderSupervisor.stream()
             .map(employee -> modelMapper.map(employee, EmployeeDTO.class))
-            .collect(Collectors.toList());
+        .collect(Collectors.toList());
     }
-
 }
