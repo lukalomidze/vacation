@@ -1,6 +1,8 @@
 package pt.ribas.vacation.service;
 
+import java.sql.Timestamp;
 import java.text.MessageFormat;
+import java.time.Instant;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,8 +16,10 @@ import org.springframework.web.server.ResponseStatusException;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
+import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.entity.Employee;
 import pt.ribas.vacation.entity.Vacation;
+import pt.ribas.vacation.enums.Status;
 import pt.ribas.vacation.repository.EmployeeRepository;
 import pt.ribas.vacation.repository.VacationRepository;
 
@@ -91,8 +95,23 @@ public class VacationService {
         employeeRepository.save(employee);
     }
 
+    public void alterVacationRequest(Long vacationId, Short status) {
+        Vacation vacation = vacationRepository
+            .findById(vacationId)
+        .orElseThrow(
+            () -> new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                MessageFormat.format("Vacation with id {0} not found", vacationId)
+            )
+        );
 
-    public List<EmployeeDTO> getSupervisorEmployees(Long supervisorId) {
+        vacation.setStatus(Status.values()[status]);
+        vacation.setStatusChange(Timestamp.from(Instant.now()));
+
+        vacationRepository.save(vacation);
+    }
+
+    public List<SupervisorEmployeeDTO> getSupervisorEmployees(Long supervisorId) {
         Employee supervisor = employeeRepository
             .findById(supervisorId)
         .orElseThrow(
@@ -112,7 +131,7 @@ public class VacationService {
         List<Employee> employeesUnderSupervisor = employeeRepository.findBySupervisor(supervisor);
 
         return employeesUnderSupervisor.stream()
-            .map(employee -> modelMapper.map(employee, EmployeeDTO.class))
+            .map(employee -> modelMapper.map(employee, SupervisorEmployeeDTO.class))
         .collect(Collectors.toList());
     }
 }
