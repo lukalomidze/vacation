@@ -13,6 +13,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,12 @@ import lombok.ToString;
 import pt.ribas.vacation.enums.Gender;
 
 @Entity
-@Table(name = "employees")
+@Table(
+    name = "employees",
+    uniqueConstraints = {
+        @UniqueConstraint(columnNames = {"email"})
+    }
+)
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

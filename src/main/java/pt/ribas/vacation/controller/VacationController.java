@@ -60,7 +60,17 @@ public class VacationController {
     public void registerEmployee(
         @Valid @RequestBody RegisterEmployeeDTO employeeDTO
     ) {
-        service.registerEmployee(employeeDTO);
+        try {
+            service.registerEmployee(employeeDTO);
+        } catch (DataIntegrityViolationException e) {
+            throw new ResponseStatusException(
+                HttpStatus.BAD_REQUEST,
+                MessageFormat.format(
+                    "Email {0} already in use",
+                    employeeDTO.getEmail()
+                )
+            );
+        }
     }
 
     @PutMapping("/alter-vacation-request")
