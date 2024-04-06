@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
+import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
 
 
@@ -54,7 +55,9 @@ public class VacationController {
     }
 
     @PostMapping("/register-employee")
-    public void registerEmployee(@Valid @RequestBody RegisterEmployeeDTO employeeDTO) {
+    public void registerEmployee(
+        @Valid @RequestBody RegisterEmployeeDTO employeeDTO
+    ) {
         service.registerEmployee(employeeDTO);
     }
 
@@ -65,7 +68,9 @@ public class VacationController {
 
     // TODO: remove supervisor from this specific dto, add table for admins
     @GetMapping("/get-supervisor-employees/{id}")    
-    public List<EmployeeDTO> getSupervisorEmployees(@PathVariable Long id) {
+    public List<SupervisorEmployeeDTO> getSupervisorEmployees(
+        @PathVariable Long id
+    ) {
         return service.getSupervisorEmployees(id);
     }
 }
