@@ -6,5 +6,4 @@ import pt.ribas.vacation.entity.Admin;
 
 public interface AdminRepository extends JpaRepository<Admin, Long>{
 
-    
 }
