@@ -18,3 +18,5 @@ insert into employees (first_name, last_name, email, gender, supervisor_id) valu
 insert into employees (first_name, last_name, email, gender, supervisor_id) values ('Aurora', 'Benardeau', 'abenardeauh@ribas.pt', 'F', 4);
 insert into employees (first_name, last_name, email, gender, supervisor_id) values ('Odelia', 'Bottomore', 'obottomorei@ribas.pt', 'F', 2);
 insert into employees (first_name, last_name, email, gender, supervisor_id) values ('Noach', 'Rearden', 'nreardenj@ribas.pt', 'M', 4);
+
+insert into admins (username, password, email) values ('admin', '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm', 'admin@ribas.pt');
