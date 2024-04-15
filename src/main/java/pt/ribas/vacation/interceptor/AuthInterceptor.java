@@ -40,17 +40,15 @@ public class AuthInterceptor implements HandlerInterceptor {
             )
         );
 
-        String[] split = auth.split(":");
-
-        if (split.length != 2) {
+        if (!auth.matches(".+:.+")) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
                 "Include username and password in Authorization header with the format username:password"
             );
         }
 
-        String username = split[0];
-        String password = split[1];
+        String username = auth.split(":")[0];
+        String password = auth.split(":")[1];
 
         Admin admin = adminRepository
             .findByUsername(username)
