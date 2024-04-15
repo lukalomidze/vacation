@@ -4,17 +4,13 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import pt.ribas.vacation.enums.Status;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 public class EmployeeVacationDTO {
     private LocalDate startDate;
 

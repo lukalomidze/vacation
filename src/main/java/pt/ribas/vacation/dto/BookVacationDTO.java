@@ -4,16 +4,12 @@ import java.time.LocalDate;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 public class BookVacationDTO {
     @NotNull(message = "startDate must be provided in request body")
     private LocalDate startDate;

@@ -3,15 +3,13 @@ package pt.ribas.vacation.dto;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import pt.ribas.vacation.enums.Gender;
 
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class RegisterEmployeeDTO {
 
     @NotBlank(message = "firstName must be provided in request body")
