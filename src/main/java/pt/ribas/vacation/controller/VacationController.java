@@ -72,7 +72,10 @@ public class VacationController {
     }
 
     @PutMapping("/alter-vacation-request")
-    public void alterVacationRequest(@RequestParam Long vacationId, @RequestParam Short status) {
+    public void alterVacationRequest(
+        @RequestParam Long vacationId,
+        @RequestParam Short status
+    ) {
         service.alterVacationRequest(vacationId, status);
     }
 
