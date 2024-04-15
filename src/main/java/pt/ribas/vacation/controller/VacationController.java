@@ -78,7 +78,6 @@ public class VacationController {
         service.alterVacationRequest(vacationId, status);
     }
 
-    // TODO: remove supervisor from this specific dto, add table for admins
     @GetMapping("/get-supervisor-employees/{id}")    
     public List<SupervisorEmployeeDTO> getSupervisorEmployees(
         @PathVariable Long id
