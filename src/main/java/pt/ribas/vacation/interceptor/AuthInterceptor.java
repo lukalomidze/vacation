@@ -27,10 +27,6 @@ public class AuthInterceptor implements HandlerInterceptor {
         HttpServletResponse response,
         Object handler
     ) throws Exception {
-        if (!request.getRequestURI().startsWith("/register-employee")) {
-            return true;
-        }
-
         String auth = Optional
             .ofNullable(request.getHeader("Authorization"))
         .orElseThrow(
