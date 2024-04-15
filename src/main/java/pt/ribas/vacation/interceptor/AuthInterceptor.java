@@ -61,8 +61,6 @@ public class AuthInterceptor implements HandlerInterceptor {
             )
         );
 
-        String hashedPassword = encoder.encode(password);
-        
         if(!encoder.matches(password, admin.getPassword())) {
             throw new ResponseStatusException(
                 HttpStatus.FORBIDDEN,
