@@ -23,8 +23,6 @@ import pt.ribas.vacation.dto.RegisterEmployeeDTO;
 import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
 
-
-
 @RestController
 @CrossOrigin("*")
 public class VacationController {
