@@ -134,4 +134,11 @@ public class VacationService {
             .map(employee -> modelMapper.map(employee, SupervisorEmployeeDTO.class))
         .collect(Collectors.toList());
     }
+
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeRepository.findAll()
+            .stream()
+            .map(employee -> modelMapper.map(employee, EmployeeDTO.class))
+        .collect(Collectors.toList());
+    }
 }

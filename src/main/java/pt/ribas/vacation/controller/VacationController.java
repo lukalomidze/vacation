@@ -85,4 +85,10 @@ public class VacationController {
     ) {
         return service.getSupervisorEmployees(id);
     }
+
+    @GetMapping("/employee/all")
+    public List<EmployeeDTO> getAllEmployees() {
+        return service.getAllEmployees();
+    }
+    
 }
