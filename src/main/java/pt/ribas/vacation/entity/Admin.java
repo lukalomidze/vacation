@@ -8,10 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 @Table(
@@ -20,11 +18,9 @@ import lombok.ToString;
         @UniqueConstraint(columnNames = {"email"})
     }
 )
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

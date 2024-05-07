@@ -16,10 +16,8 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.persistence.UniqueConstraint;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 import pt.ribas.vacation.enums.Status;
 
 @Entity
@@ -29,11 +27,9 @@ import pt.ribas.vacation.enums.Status;
         @UniqueConstraint(columnNames = {"startDate", "endDate", "status", "employee_id"})
     }
 )
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
-@ToString
 public class Vacation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
