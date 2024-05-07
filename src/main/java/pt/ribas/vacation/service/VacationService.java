@@ -35,13 +35,13 @@ public class VacationService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public EmployeeDTO getEmployee(Long id) {
+    public EmployeeDTO getEmployee(String email) {
         Employee employee = employeeRepository
-            .findById(id)
+            .findByEmail(email)
         .orElseThrow(
             () -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
-                MessageFormat.format("Employee with id {0} not found", id)
+                MessageFormat.format("Employee with email {0} not found", email)
             )
         );
 

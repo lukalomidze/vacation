@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -29,9 +30,11 @@ public class VacationController {
     @Autowired
     private VacationService service;
 
-    @GetMapping("/employee/{id}")
-    public EmployeeDTO getEmployee(@PathVariable Long id) {
-        return service.getEmployee(id);
+    @GetMapping("/employee")
+    public EmployeeDTO getEmployee() {
+        return service.getEmployee(
+            SecurityContextHolder.getContext().getAuthentication().getName()
+        );
     }
 
     @PostMapping("/book-vacation")
