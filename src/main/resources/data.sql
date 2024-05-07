@@ -19,4 +19,4 @@ INSERT INTO employees (first_name, last_name, email, password, gender, superviso
 INSERT INTO employees (first_name, last_name, email, password, gender, supervisor_id) VALUES ('Odelia', 'Bottomore', 'obottomorei@ribas.pt', '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm' 'F', 2);
 INSERT INTO employees (first_name, last_name, email, password, gender, supervisor_id) VALUES ('Noach', 'Rearden', 'nreardenj@ribas.pt', '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm' 'M', 4);
 
-INSERT INTO admins (email, password) VALUES ('admin@ribas.pto' '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm', '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm');
+INSERT INTO admins (email, password) VALUES ('admin@ribas.pt' '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm', '$2a$10$SPtCKntZ9.I9ZCSMtO3ewuDKrAeH1Te6nCGHyqT4V2WnXg7.7lHUm');
