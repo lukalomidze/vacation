@@ -48,6 +48,9 @@ public class Employee {
     private String email;
 
     @Column(nullable = false)
+    private String password;
+
+    @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
