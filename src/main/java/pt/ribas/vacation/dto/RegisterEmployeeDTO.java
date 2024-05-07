@@ -20,6 +20,9 @@ public class RegisterEmployeeDTO {
 
     @NotBlank(message = "email must be provided in request body")
     private String email;
+    
+    @NotBlank(message = "password must be provided in request body")
+    private String password;
 
     @NotNull(message = "gender must be provided in request body")
     private Gender gender;
