@@ -9,7 +9,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -84,11 +83,11 @@ public class VacationController {
         service.alterVacationRequest(vacationId, status);
     }
 
-    @GetMapping("/get-supervisor-employees/{id}")    
-    public List<SupervisorEmployeeDTO> getSupervisorEmployees(
-        @PathVariable Long id
-    ) {
-        return service.getSupervisorEmployees(id);
+    @GetMapping("/get-supervisor-employees")    
+    public List<SupervisorEmployeeDTO> getSupervisorEmployees() {
+        return service.getSupervisorEmployees(
+            SecurityContextHolder.getContext().getAuthentication().getName()
+        );
     }
 
     @GetMapping("/employee/all")

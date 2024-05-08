@@ -109,20 +109,26 @@ public class VacationService {
         vacationRepository.save(vacation);
     }
 
-    public List<SupervisorEmployeeDTO> getSupervisorEmployees(Long supervisorId) {
+    public List<SupervisorEmployeeDTO> getSupervisorEmployees(String supervisorEmail) {
         Employee supervisor = employeeRepository
-            .findById(supervisorId)
+            .findByEmail(supervisorEmail)
         .orElseThrow(
             () -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
-                MessageFormat.format("Supervisor with id {0} not found", supervisorId)
+                MessageFormat.format(
+                    "Supervisor with email {0} not found",
+                    supervisorEmail
+                )
             )
         );
 
         if (supervisor.getSupervisor() != null) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
-                MessageFormat.format("Employee with id {0} is not a supervisor", supervisorId)
+                MessageFormat.format(
+                    "Employee with email {0} is not a supervisor",
+                    supervisorEmail
+                )
             );
         }
 
