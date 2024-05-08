@@ -48,15 +48,13 @@ public class VacationService {
         return modelMapper.map(employee, EmployeeDTO.class);
     }
 
-    public void bookVacation(BookVacationDTO vacationDTO) {
-        Long employeeId = vacationDTO.getEmployeeId();
-
+    public void bookVacation(BookVacationDTO vacationDTO, String email) {
         Employee employee = employeeRepository
-            .findById(employeeId)
+            .findByEmail(email)
         .orElseThrow(
             () -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
-                MessageFormat.format("Employee with id {0} not found", employeeId)
+                MessageFormat.format("Employee with email {0} not found", email)
             )
         );
 

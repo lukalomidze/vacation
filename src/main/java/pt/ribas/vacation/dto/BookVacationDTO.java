@@ -16,7 +16,4 @@ public class BookVacationDTO {
 
     @NotNull(message = "endDate must be provided in request body")
     private LocalDate endDate;
-
-    @NotNull(message = "employeeId must be provided in request body")
-    private Long employeeId;
 }

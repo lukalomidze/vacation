@@ -41,15 +41,17 @@ public class VacationController {
     public void bookVacation(
         @Valid @RequestBody BookVacationDTO vacationDTO
     ) {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+
         try {
-            service.bookVacation(vacationDTO);
+            service.bookVacation(vacationDTO, email);
         } catch (DataIntegrityViolationException e) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
                 MessageFormat.format(
-                    "Employee with id {0} has already requested" + 
+                    "Employee with email {0} has already requested" + 
                     " a vacation in the timespan {1} - {2}",
-                    vacationDTO.getEmployeeId(),
+                    email,
                     vacationDTO.getStartDate(),
                     vacationDTO.getEndDate()
                 )
