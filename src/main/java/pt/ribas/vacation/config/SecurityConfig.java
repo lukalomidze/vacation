@@ -78,6 +78,8 @@ public class SecurityConfig {
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
                     .requestMatchers("/register-employee").hasAnyRole("ADMIN")
+                    .requestMatchers("/employee/all").hasAnyRole("ADMIN")
+                    .requestMatchers("/get-supervisor-employees").hasAnyRole("SUPERVISOR")
                     .requestMatchers("/alter-vacation-request").hasAnyRole("ADMIN", "SUPERVISOR")
                 .anyRequest().authenticated()
             )
