@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -76,6 +77,9 @@ public class VacationController {
     }
 
     @PutMapping("/alter-vacation-request")
+    @PreAuthorize(
+        "hasAuthority('ROLE_ADMIN') or @securityService.isVacationSupervisor(#vacationId)"
+    )
     public void alterVacationRequest(
         @RequestParam Long vacationId,
         @RequestParam Short status
