@@ -78,7 +78,7 @@ public class VacationController {
 
     @PutMapping("/alter-vacation-request")
     @PreAuthorize(
-        "hasAuthority('ROLE_ADMIN') or @securityService.isVacationSupervisor(#vacationId)"
+        "hasRole('ADMIN') or @securityService.isVacationSupervisor(#vacationId)"
     )
     public void alterVacationRequest(
         @RequestParam Long vacationId,

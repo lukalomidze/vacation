@@ -35,11 +35,7 @@ public class SecurityService {
             .findByEmail(
                 SecurityContextHolder.getContext().getAuthentication().getName()
             )
-        .orElse(null);
-
-        if (supervisor == null) {
-            return false;
-        }
+        .get();
 
         Long vacationSupervisorId = vacation.getEmployee().getSupervisor().getId();
 
