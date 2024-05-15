@@ -12,6 +12,8 @@ import pt.ribas.vacation.enums.Status;
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmployeeVacationDTO {
+    private Long id;
+    
     private LocalDate startDate;
 
     private LocalDate endDate;
