@@ -13,13 +13,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.server.ResponseStatusException;
 
+import pt.ribas.vacation.dto.AlterVacationDTO;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
 import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.entity.Employee;
 import pt.ribas.vacation.entity.Vacation;
-import pt.ribas.vacation.enums.Status;
 import pt.ribas.vacation.repository.EmployeeRepository;
 import pt.ribas.vacation.repository.VacationRepository;
 
@@ -93,7 +93,9 @@ public class VacationService {
         employeeRepository.save(employee);
     }
 
-    public void alterVacationRequest(Long vacationId, Short status) {
+    public void alterVacationRequest(AlterVacationDTO alterVacationDTO) {
+        Long vacationId = alterVacationDTO.getVacationId();
+
         Vacation vacation = vacationRepository
             .findById(vacationId)
         .orElseThrow(
@@ -103,7 +105,7 @@ public class VacationService {
             )
         );
 
-        vacation.setStatus(Status.values()[status]);
+        vacation.setStatus(alterVacationDTO.getStatus());
         vacation.setStatusChange(Timestamp.from(Instant.now()));
 
         vacationRepository.save(vacation);

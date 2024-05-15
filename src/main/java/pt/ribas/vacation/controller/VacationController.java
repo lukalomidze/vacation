@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
+import pt.ribas.vacation.dto.AlterVacationDTO;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
@@ -81,10 +81,9 @@ public class VacationController {
         "hasRole('ADMIN') or @securityService.isVacationSupervisor(#vacationId)"
     )
     public void alterVacationRequest(
-        @RequestParam Long vacationId,
-        @RequestParam Short status
+        @Valid @RequestBody AlterVacationDTO alterVacationDTO
     ) {
-        service.alterVacationRequest(vacationId, status);
+        service.alterVacationRequest(alterVacationDTO);
     }
 
     @GetMapping("/get-supervisor-employees")    
