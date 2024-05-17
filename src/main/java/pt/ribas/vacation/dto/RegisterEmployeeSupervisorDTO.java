@@ -1,7 +1,7 @@
 package pt.ribas.vacation.dto;
 
 
-import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterEmployeeSupervisorDTO {
-    @NotNull(message = "Email must be provided")
+    @NotBlank(message = "Email must be provided")
     private String email;
 }

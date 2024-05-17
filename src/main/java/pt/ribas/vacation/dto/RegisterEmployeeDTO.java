@@ -1,5 +1,6 @@
 package pt.ribas.vacation.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -27,6 +28,6 @@ public class RegisterEmployeeDTO {
     @NotNull(message = "gender must be provided in request body")
     private Gender gender;
 
-    @NotNull(message = "supervisorId must be provided in request body")
+    @Valid
     private RegisterEmployeeSupervisorDTO supervisor;
 }
