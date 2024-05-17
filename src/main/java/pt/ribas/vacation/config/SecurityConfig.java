@@ -75,6 +75,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
             .csrf(csrf -> csrf.disable())
+            .cors(Customizer.withDefaults())
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
                     .requestMatchers("/register-employee").hasAnyRole("ADMIN")
