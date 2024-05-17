@@ -68,21 +68,21 @@ public class VacationService {
     }
 
     public void registerEmployee(RegisterEmployeeDTO employeeDTO) {
-        Long supervisorId = employeeDTO.getSupervisor().getId();
+        String supervisorEmail = employeeDTO.getSupervisor().getEmail();
 
         Employee supervisor = employeeRepository
-            .findById(supervisorId)
+            .findByEmail(supervisorEmail)
         .orElseThrow(
             () -> new ResponseStatusException(
                 HttpStatus.NOT_FOUND,
-                MessageFormat.format("Employee with id {0} not found", supervisorId)
+                MessageFormat.format("Employee with id {0} not found", supervisorEmail)
             )
         );
 
         if (supervisor.getSupervisor() != null) {
             throw new ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
-                MessageFormat.format("Employee with id {0} is not a supervisor", supervisorId)
+                MessageFormat.format("Employee with id {0} is not a supervisor", supervisorEmail)
             );
         }
 

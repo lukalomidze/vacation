@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterEmployeeSupervisorDTO {
-    @NotNull(message = "Id must be provided")
-    private Long id;
+    @NotNull(message = "Email must be provided")
+    private String email;
 }
