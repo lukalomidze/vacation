@@ -25,7 +25,7 @@ import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
+@CrossOrigin(origins = "*")
 public class VacationController {
     @Autowired
     private VacationService service;
