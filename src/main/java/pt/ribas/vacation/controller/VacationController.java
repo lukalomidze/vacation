@@ -47,7 +47,7 @@ public class VacationController {
             service.bookVacation(vacationDTO, email);
         } catch (DataIntegrityViolationException e) {
             throw new ResponseStatusException(
-                HttpStatus.BAD_REQUEST,
+                HttpStatus.CONFLICT,
                 MessageFormat.format(
                     "Employee with email {0} has already requested" + 
                     " a vacation in the timespan {1} - {2}",
