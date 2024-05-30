@@ -1,4 +1,4 @@
-#Vacation Control System
+# Vacation Control System
 
 Vacation Control System app for a Software Engineering class
 
