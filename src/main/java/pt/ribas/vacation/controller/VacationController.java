@@ -18,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import jakarta.validation.Valid;
 import pt.ribas.vacation.dto.AlterVacationDTO;
+import pt.ribas.vacation.dto.AuthenticatedUserRoleDTO;
 import pt.ribas.vacation.dto.BookVacationDTO;
 import pt.ribas.vacation.dto.EmployeeDTO;
 import pt.ribas.vacation.dto.RegisterEmployeeDTO;
@@ -25,10 +26,17 @@ import pt.ribas.vacation.dto.SupervisorEmployeeDTO;
 import pt.ribas.vacation.service.VacationService;
 
 @RestController
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://127.0.0.1:8080")
 public class VacationController {
     @Autowired
     private VacationService service;
+
+    @GetMapping("/current-user-role")
+    public AuthenticatedUserRoleDTO getAuthenticatedUserRole() {
+        return new AuthenticatedUserRoleDTO(
+            SecurityContextHolder.getContext().getAuthentication().getAuthorities().toArray()
+        );
+    }
 
     @GetMapping("/employee")
     public EmployeeDTO getEmployee() {
