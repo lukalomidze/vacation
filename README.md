@@ -19,3 +19,5 @@ Example authentication data for testing:
 Password for every existing employee/administrator is password
 
 For the sake of consistent starting point during testing only an in-memory database is used
+
+Demo: https://vacation.ashyflower-3312f080.germanywestcentral.azurecontainerapps.io
