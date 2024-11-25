@@ -28,7 +28,7 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
-            @Value("${auth.admin.username}")
+            @Value("${auth.admin.email}")
             private String adminUsername;
 
             @Value("${auth.admin.password}")
@@ -79,16 +79,25 @@ public class SecurityConfig {
             .cors(Customizer.withDefaults())
             .authorizeHttpRequests(
                 requestRegistry -> requestRegistry
+                    .requestMatchers("/login.html").permitAll()
                     .requestMatchers("/register-employee").hasAnyRole("ADMIN")
                     .requestMatchers("/employee/all").hasAnyRole("ADMIN")
                     .requestMatchers("/get-supervisor-employees").hasAnyRole("SUPERVISOR")
                     .requestMatchers("/alter-vacation-request").hasAnyRole("ADMIN", "SUPERVISOR")
                 .anyRequest().authenticated()
             )
-            .httpBasic(Customizer.withDefaults())
+            .formLogin(form -> form
+                .usernameParameter("email")
+                .defaultSuccessUrl("/", true)
+                .loginPage("/login.html")
+                .loginProcessingUrl("/login")
+            )
+            .logout(logout -> logout
+                .deleteCookies("JSESSIONID")
+            )
             .sessionManagement(
                 sessionManagementConfigurer -> sessionManagementConfigurer.sessionCreationPolicy(
-                    SessionCreationPolicy.STATELESS
+                    SessionCreationPolicy.ALWAYS
                 )
             )
         .build();
